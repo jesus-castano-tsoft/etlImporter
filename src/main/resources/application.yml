@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+  datasource:
+    #url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/etl_xray_app}
+    url: jdbc:postgresql://localhost:5432/etl_xray_app?currentSchema=etl_xray_app
+    #username: ${POSTGRES_USERNAME:postgres}
+    #password: ${POSTGRES_PASSWORD:password}
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+xray:
+  base-url: https://xray.cloud.getxray.app/api/v2
+  #client-id: ${XRAY_CLIENT_ID:your-client-id}
+  #client-secret: ${XRAY_CLIENT_SECRET:your-client-secret}
+  client-id: 9A2013EDB23B45F9B8830521C64F0859
+  client-secret: 0ded039b5a45aef1f5fd0d858afd3b5c8648cea670456ab42e9f8a039c421e48
+  #project-key: MYPROJECT
+  graphql-limit: 50
